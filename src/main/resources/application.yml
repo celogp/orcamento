@@ -1,0 +1,20 @@
+#
+#Derby
+#
+spring:
+  jpa:
+    database: derby
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        format-sql: true
+    show-sql: true
+
+
+  datasource:
+    url: jdbc:derby://localhost:1527/sw1techdborca;create=true
+    driver-class-name: org.apache.derby.client.ClientAutoloadedDriver
+
+  flyway:
+    baseline-on-migrate: true

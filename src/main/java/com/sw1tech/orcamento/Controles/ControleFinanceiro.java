@@ -2,6 +2,7 @@ package com.sw1tech.orcamento.Controles;
 
 import com.sw1tech.orcamento.Contratos.Controles.IControleFinanceiro;
 import com.sw1tech.orcamento.Entidades.Financeiro;
+import com.sw1tech.orcamento.Requisicoes.FinanceiroBaixaReq;
 import com.sw1tech.orcamento.Requisicoes.FinanceiroReq;
 import com.sw1tech.orcamento.Respostas.FinanceiroRes;
 import com.sw1tech.orcamento.Respostas.ObjetoResposta;
@@ -13,10 +14,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.GregorianCalendar;
 import java.util.stream.Collectors;
 
 @RestController
@@ -94,6 +91,37 @@ public class ControleFinanceiro implements IControleFinanceiro {
         }
         _servicosFinanceiro.doApagar(id);
         var _objResposta = new ObjetoResposta(id);
+        return new ResponseEntity(_objResposta, HttpStatus.OK);
+    }
+
+
+    @Override
+    public ResponseEntity<ObjetoResposta> doBaixar(FinanceiroBaixaReq _requisicao) {
+        var _financeiro = _servicosFinanceiro.doObterPorId(_requisicao.getId()).orElseGet(Financeiro::new);
+        _requisicao.setDtMovimento(_financeiro.getDtMovimento());
+        _requisicao.setVlrFinanceiro(_financeiro.getVlrFinanceiro());
+
+        if ( !_requisicao.doValidar() ) {
+            var _objResposta = new ObjetoResposta(_requisicao, _requisicao.doObterMensagens());
+            return new ResponseEntity(_objResposta, HttpStatus.BAD_REQUEST);
+        }
+
+        var _objResposta = new ObjetoResposta(
+                _servicosFinanceiro.doBaixar(_requisicao.getId(), _requisicao.getDtBaixa(), _requisicao.getVlrBaixa())
+        );
+
+        return new ResponseEntity(_objResposta, HttpStatus.OK);
+    }
+
+    @Override
+    public ResponseEntity<ObjetoResposta> doEstornarBaixa(int id) {
+        if (id<=0){
+            var _objResposta = new ObjetoResposta(id);
+            return new ResponseEntity(_objResposta, HttpStatus.BAD_REQUEST);
+        }
+        var _objResposta = new ObjetoResposta(
+                _servicosFinanceiro.doEstornarBaixa(id)
+        );
         return new ResponseEntity(_objResposta, HttpStatus.OK);
     }
 }

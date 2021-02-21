@@ -40,13 +40,5 @@ public class Financeiro {
     @JoinColumn(name = "parceiroid", referencedColumnName = "id")
     private Parceiro parceiro;
 
-    @Column(name="dtretorno")
-    @Temporal(TemporalType.DATE)
-    private Date dtRetorno;
-
-    @Column(name="dtaux")
-    @Temporal(TemporalType.DATE)
-    @DateTimeFormat(pattern = "yyyy-MM-dd")
-    private Date dtAux;
 
 }

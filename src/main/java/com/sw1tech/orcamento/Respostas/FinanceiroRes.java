@@ -19,7 +19,4 @@ public class FinanceiroRes {
     private BigDecimal vlrBaixa;
     private int parceiroId;
     private Parceiro parceiro;
-    private Date dtRetorno;
-
-    private Date dtAux;
 }

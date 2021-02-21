@@ -6,6 +6,8 @@ import com.sw1tech.orcamento.Entidades.Financeiro;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.math.BigDecimal;
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -39,5 +41,15 @@ public class ServicoFinanceiro implements IServicoFinanceiro {
     @Override
     public List<Financeiro> doObterTodos() {
         return _repositoriosFinanceiro.findAll();
+    }
+
+    @Override
+    public Integer doBaixar(int id, Date dtBaixa, BigDecimal vlrBaixa) {
+        return _repositoriosFinanceiro.doBaixar(id, dtBaixa, vlrBaixa);
+    }
+
+    @Override
+    public Integer doEstornarBaixa(int id) {
+        return _repositoriosFinanceiro.doEstornarBaixa(id);
     }
 }

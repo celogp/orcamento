@@ -59,7 +59,7 @@ public class FinanceiroBaixaReq extends RequisicaoBase {
                     this.lstMensagens.add("Atenção !, Valor da baixa está sem valor.");
                 }
 
-                if (this.vlrBaixa.compareTo(BigDecimal.ZERO) == -1) {
+                if (this.vlrBaixa.compareTo(BigDecimal.ZERO) < 0) {
                     this.lstMensagens.add("Atenção !, Valor da baixa não pode ser menor que zero.");
                 }
                 if (this.vlrBaixa.compareTo(this.vlrFinanceiro) != 0) {

@@ -11,14 +11,14 @@ import java.util.List;
 @EqualsAndHashCode(callSuper = true)
 public class FinanceiroReq  extends RequisicaoBase {
     private int id;
-    private int recdesp;
+    private boolean receita;
     private Date dtMovimento;
     private Date dtVencimento;
     private Date dtBaixa;
     private String historico;
     private BigDecimal vlrFinanceiro;
-    private BigDecimal vlrBaixa;
     private int parceiroId;
+    private boolean pendente;
 
 
     @Override

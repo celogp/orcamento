@@ -1,11 +1,9 @@
 package com.sw1tech.orcamento.Entidades;
 
 import lombok.Data;
-import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
-import java.sql.Timestamp;
 import java.util.Date;
 
 @Data
@@ -15,8 +13,8 @@ public class Financeiro {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    @Column(name="recdesp")
-    private int recdesp;
+    @Column(name="receita")
+    private boolean receita;
 
     @Column(name="dtmovimento")
     private Date dtMovimento;
@@ -33,12 +31,11 @@ public class Financeiro {
     @Column(name="vlrfinanceiro")
     private BigDecimal vlrFinanceiro;
 
-    @Column(name="vlrbaixa")
-    private BigDecimal vlrBaixa;
-
     @ManyToOne()
     @JoinColumn(name = "parceiroid", referencedColumnName = "id")
     private Parceiro parceiro;
 
+    @Column(name="pendente")
+    private boolean pendente;
 
 }

@@ -44,8 +44,8 @@ public class ServicoFinanceiro implements IServicoFinanceiro {
     }
 
     @Override
-    public Integer doBaixar(int id, Date dtBaixa, BigDecimal vlrBaixa) {
-        return _repositoriosFinanceiro.doBaixar(id, dtBaixa, vlrBaixa);
+    public Integer doBaixar(int id, Date dtBaixa) {
+        return _repositoriosFinanceiro.doBaixar(id, dtBaixa);
     }
 
     @Override

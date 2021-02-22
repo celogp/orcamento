@@ -100,6 +100,7 @@ public class ControleFinanceiro implements IControleFinanceiro {
         var _financeiro = _servicosFinanceiro.doObterPorId(_requisicao.getId()).orElseGet(Financeiro::new);
         _requisicao.setDtMovimento(_financeiro.getDtMovimento());
         _requisicao.setVlrFinanceiro(_financeiro.getVlrFinanceiro());
+        _requisicao.setPendente(_financeiro.isPendente());
 
         if ( !_requisicao.doValidar() ) {
             var _objResposta = new ObjetoResposta(_requisicao, _requisicao.doObterMensagens());
@@ -107,7 +108,7 @@ public class ControleFinanceiro implements IControleFinanceiro {
         }
 
         var _objResposta = new ObjetoResposta(
-                _servicosFinanceiro.doBaixar(_requisicao.getId(), _requisicao.getDtBaixa(), _requisicao.getVlrBaixa())
+                _servicosFinanceiro.doBaixar(_requisicao.getId(), _requisicao.getDtBaixa())
         );
 
         return new ResponseEntity(_objResposta, HttpStatus.OK);

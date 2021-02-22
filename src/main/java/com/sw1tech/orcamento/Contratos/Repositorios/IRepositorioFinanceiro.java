@@ -16,13 +16,12 @@ public interface IRepositorioFinanceiro extends JpaRepository<Financeiro, Intege
 
     @Transactional
     @Modifying(clearAutomatically = true)
-    @Query(value = "update TFinanceiros f set f.dtbaixa = :dtbaixa, f.vlrbaixa = :vlrbaixa where f.id = :id", nativeQuery = true)
+    @Query(value = "update TFinanceiros f set f.dtbaixa = :dtbaixa, f.pendente = false where f.id = :id", nativeQuery = true)
     Integer doBaixar(@Param("id") Integer id,
-                     @Param("dtbaixa") Date dtbaixa,
-                     @Param("vlrbaixa") BigDecimal vlrbaixa);
+                     @Param("dtbaixa") Date dtbaixa);
 
     @Transactional
     @Modifying(clearAutomatically = true)
-    @Query(value = "update TFinanceiros f set f.dtbaixa = null, f.vlrbaixa = 0 where f.id = :id", nativeQuery = true)
+    @Query(value = "update TFinanceiros f set f.dtbaixa = null, f.pendente = true where f.id = :id", nativeQuery = true)
     Integer doEstornarBaixa(@Param("id") Integer id);
 }

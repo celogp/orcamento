@@ -1,6 +1,7 @@
 package com.sw1tech.orcamento.Entidades;
 
 import lombok.Data;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
@@ -16,12 +17,18 @@ public class Financeiro {
     @Column(name="receita")
     private boolean receita;
 
+    @Temporal(TemporalType.DATE)
+    @DateTimeFormat(pattern="dd/MM/yyyy")
     @Column(name="dtmovimento")
     private Date dtMovimento;
 
+    @Temporal(TemporalType.DATE)
+    @DateTimeFormat(pattern="dd/MM/yyyy")
     @Column(name="dtvencimento")
     private Date dtVencimento;
 
+    @Temporal(TemporalType.DATE)
+    @DateTimeFormat(pattern="dd/MM/yyyy")
     @Column(name="dtbaixa")
     private Date dtBaixa;
 

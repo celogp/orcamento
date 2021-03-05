@@ -2,6 +2,7 @@ package com.sw1tech.orcamento.Requisicoes;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import java.math.BigDecimal;
 import java.util.Date;
@@ -12,8 +13,11 @@ import java.util.List;
 public class FinanceiroReq  extends RequisicaoBase {
     private int id;
     private boolean receita;
+    @DateTimeFormat(pattern="dd/MM/yyyy")
     private Date dtMovimento;
+    @DateTimeFormat(pattern="dd/MM/yyyy")
     private Date dtVencimento;
+    @DateTimeFormat(pattern="dd/MM/yyyy")
     private Date dtBaixa;
     private String historico;
     private BigDecimal vlrFinanceiro;

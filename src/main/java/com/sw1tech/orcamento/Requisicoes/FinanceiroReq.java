@@ -12,6 +12,8 @@ import java.util.List;
 @EqualsAndHashCode(callSuper = true)
 public class FinanceiroReq  extends RequisicaoBase {
     private int id;
+    private int nroDocumento;
+
     private boolean receita;
     @DateTimeFormat(pattern="dd/MM/yyyy")
     private Date dtMovimento;

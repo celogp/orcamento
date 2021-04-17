@@ -14,6 +14,9 @@ public class Financeiro {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
+    @Column(name="nrodocumento")
+    private int nrodocumento;
+
     @Column(name="receita")
     private boolean receita;
 

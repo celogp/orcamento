@@ -10,6 +10,7 @@ import java.util.Date;
 @Data
 public class FinanceiroRes {
     private int id;
+    private int nroDocumento;
     private boolean receita;
     @DateTimeFormat(pattern="dd/MM/yyyy")
     private Date dtMovimento;

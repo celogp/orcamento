@@ -14,6 +14,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.math.BigDecimal;
 import java.util.stream.Collectors;
 
 @RestController
@@ -27,7 +28,6 @@ public class ControleFinanceiro implements IControleFinanceiro {
     ModelMapper _modelMapper;
 
     private FinanceiroRes doMapperEntityToRes(Financeiro financeiro){
-
         return _modelMapper.map(financeiro, FinanceiroRes.class);
     }
 
@@ -123,6 +123,30 @@ public class ControleFinanceiro implements IControleFinanceiro {
         var _objResposta = new ObjetoResposta(
                 _servicosFinanceiro.doEstornarBaixa(id)
         );
+        return new ResponseEntity(_objResposta, HttpStatus.OK);
+    }
+
+    @Override
+    public ResponseEntity<ObjetoResposta> doObterFinanceirosMes(int ano) {
+        var lstFinanceiroChartMes = _servicosFinanceiro.doObterFinanceirosMes(ano);
+        var mesesAno = new int[]{1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12};
+        var vlrRecMes = new BigDecimal[]{ BigDecimal.ZERO,
+                BigDecimal.ZERO, BigDecimal.ZERO, BigDecimal.ZERO, BigDecimal.ZERO,
+                BigDecimal.ZERO, BigDecimal.ZERO, BigDecimal.ZERO, BigDecimal.ZERO,
+                BigDecimal.ZERO, BigDecimal.ZERO, BigDecimal.ZERO};
+        var vlrDesMes = vlrRecMes.clone();
+        //
+        lstFinanceiroChartMes.stream().forEach((item) -> {
+            var mes = item.getMesref();
+            var vlr = item.getValor();
+            if (item.isReceita()){
+                vlrRecMes[mes] = vlr;
+            }else{
+                vlrDesMes[mes] = vlr;
+            }
+        });
+        var _resultResp = new Object[]{mesesAno, vlrRecMes, vlrDesMes};
+        var _objResposta = new ObjetoResposta(_resultResp);
         return new ResponseEntity(_objResposta, HttpStatus.OK);
     }
 }

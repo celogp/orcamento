@@ -3,10 +3,10 @@ package com.sw1tech.orcamento.Servicos;
 import com.sw1tech.orcamento.Contratos.Repositorios.IRepositorioFinanceiro;
 import com.sw1tech.orcamento.Contratos.Servicos.IServicoFinanceiro;
 import com.sw1tech.orcamento.Entidades.Financeiro;
+import com.sw1tech.orcamento.Respostas.FinanceiroMesRes;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.math.BigDecimal;
 import java.util.Date;
 import java.util.List;
 import java.util.Optional;
@@ -51,5 +51,12 @@ public class ServicoFinanceiro implements IServicoFinanceiro {
     @Override
     public Integer doEstornarBaixa(int id) {
         return _repositoriosFinanceiro.doEstornarBaixa(id);
+    }
+
+    @Override
+    public List<FinanceiroMesRes> doObterFinanceirosMes(int ano) {
+        var result = _repositoriosFinanceiro.customMethod(ano);
+        System.out.println(result.toString());
+        return null;
     }
 }

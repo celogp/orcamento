@@ -128,7 +128,7 @@ public class ControleFinanceiro implements IControleFinanceiro {
 
     @Override
     public ResponseEntity<ObjetoResposta> doObterFinanceirosMes(int ano) {
-        var lstFinanceiroChartMes = _servicosFinanceiro.doObterFinanceirosMes(ano);
+        var lstFinanceiroMes = _servicosFinanceiro.doObterFinanceirosMes(ano);
         var mesesAno = new int[]{1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12};
         var vlrRecMes = new BigDecimal[]{ BigDecimal.ZERO,
                 BigDecimal.ZERO, BigDecimal.ZERO, BigDecimal.ZERO, BigDecimal.ZERO,
@@ -136,16 +136,18 @@ public class ControleFinanceiro implements IControleFinanceiro {
                 BigDecimal.ZERO, BigDecimal.ZERO, BigDecimal.ZERO};
         var vlrDesMes = vlrRecMes.clone();
         //
-        lstFinanceiroChartMes.stream().forEach((item) -> {
+
+        lstFinanceiroMes.stream().forEach((item) -> {
             var mes = item.getMesref();
             var vlr = item.getValor();
             if (item.isReceita()){
-                vlrRecMes[mes] = vlr;
+                vlrRecMes[mes-1] = vlr;
             }else{
-                vlrDesMes[mes] = vlr;
+                vlrDesMes[mes-1] = vlr;
             }
         });
-        var _resultResp = new Object[]{mesesAno, vlrRecMes, vlrDesMes};
+
+        var _resultResp = new Object[]{ mesesAno, vlrRecMes, vlrDesMes};
         var _objResposta = new ObjetoResposta(_resultResp);
         return new ResponseEntity(_objResposta, HttpStatus.OK);
     }

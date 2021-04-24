@@ -1,9 +1,10 @@
 package com.sw1tech.orcamento.Servicos;
 
 import com.sw1tech.orcamento.Contratos.Repositorios.IRepositorioFinanceiro;
+import com.sw1tech.orcamento.Contratos.Repositorios.IRepositorioVFinanceiroMes;
 import com.sw1tech.orcamento.Contratos.Servicos.IServicoFinanceiro;
 import com.sw1tech.orcamento.Entidades.Financeiro;
-import com.sw1tech.orcamento.Respostas.FinanceiroMesRes;
+import com.sw1tech.orcamento.Views.VFinanceiroMes;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -16,6 +17,9 @@ public class ServicoFinanceiro implements IServicoFinanceiro {
 
     @Autowired
     IRepositorioFinanceiro _repositoriosFinanceiro;
+
+    @Autowired
+    IRepositorioVFinanceiroMes _repositoriosFinanceiroMes;
 
     @Override
     public Financeiro doAdicionar(Financeiro financeiro) {
@@ -54,9 +58,7 @@ public class ServicoFinanceiro implements IServicoFinanceiro {
     }
 
     @Override
-    public List<FinanceiroMesRes> doObterFinanceirosMes(int ano) {
-        var result = _repositoriosFinanceiro.customMethod(ano);
-        System.out.println(result.toString());
-        return null;
+    public List<VFinanceiroMes> doObterFinanceirosMes(int ano) {
+        return _repositoriosFinanceiroMes.doObterFinanceirosMesV(ano);
     }
 }

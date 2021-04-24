@@ -1,7 +1,6 @@
-# API para aplicação Web de Orcamento
-Api construida com Spring boot usando conceitos de DDD.
+# API Orcamento
+This project was generated with [Spring Boot](https://spring.io/), language Java and Maven for dependency controler
 
-## Client consumindo a api
+## Show demo.
+![](https://github.com/celogp/orcamentoWeb/blob/d03e51cd7201cccfd82f5a243d7c0f1d1e0ef98b/screens/MyOrcamento.gif)
 
-## Apresentação rápida.
-![](https://github.com/celogp/orcamento/blob/master/screen/MyOrcamento.GIF)

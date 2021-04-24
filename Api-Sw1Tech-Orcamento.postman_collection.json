@@ -1,0 +1,576 @@
+{
+	"info": {
+		"_postman_id": "19a21143-2f2c-4ed6-afda-3ffc422ea6ec",
+		"name": "Api-Sw1Tech-Orcamento",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Parceiro",
+			"item": [
+				{
+					"name": "Parceiros/doObterTodos",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/parceiros/doObterTodos",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"parceiros",
+								"doObterTodos"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Parceiros/doObterPorId",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/parceiros/doObterPorId?id=313",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"parceiros",
+								"doObterPorId"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "313"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Parceiros/doAdicionar",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{ \"razao\" : \"Parceiro novo \", \"nome\" : \"Parceiro novo \", \"celular\" : \"334456129012\", \"cpf\": \"12345678901\", \"cnpj\" : \"01212312342345\", \"localizacaoId\" : 201, \"sexoId\" : 2}\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/parceiros/doAdicionar",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"parceiros",
+								"doAdicionar"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Parceiros/doAtualizar",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{ \r\n     \"id\": 313,\r\n            \"razao\": \"Parceiro com endereço 313 a\",\r\n            \"nome\": \"Parceiro com endereço 313 a\",\r\n            \"localizacaoId\": 202,\r\n            \"cnpj\": \"01212312342345\",\r\n            \"inscricao\": null,\r\n            \"cpf\": \"12345678901\",\r\n            \"identidade\": \"ident1234\",\r\n            \"email\": \"xpto@teste.com.br\",\r\n            \"sexoId\": 1,\r\n            \"fone\": null,\r\n            \"celular\": \"334456129012\",\r\n            \"celularIsWhatsApp\": null,\r\n            \"contato\": null,\r\n            \"foneContato\": null,\r\n            \"celuluarContato\": null,\r\n            \"celularContatoIsWhatsApp\": null\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/parceiros/doAtualizar",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"parceiros",
+								"doAtualizar"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Parceiros/doApagar",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/parceiros/doApagar?id=6",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"parceiros",
+								"doApagar"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "6"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Financeiro",
+			"item": [
+				{
+					"name": "Financeiros/doObterTodos",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/financeiros/doObterTodos",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"financeiros",
+								"doObterTodos"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Financeiros/doObterPorId",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/financeiros/doObterPorId?id=3",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"financeiros",
+								"doObterPorId"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "3"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Financeiros/doObterFinanceirosMes",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/financeiros/doObterFinanceirosMes?ano=2021",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"financeiros",
+								"doObterFinanceirosMes"
+							],
+							"query": [
+								{
+									"key": "ano",
+									"value": "2021"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Financeiros/doAdicionar",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{ \"id\":0, \"receita\": true, \"parceiroId\" : 1, \"dtMovimento\" : \"2021-01-10\", \"dtVencimento\" : \"2021-01-20\", \"dtBaixa\" : \"2021-01-20\", \r\n\"historico\" : \"teste para baixar\", \"vlrFinanceiro\" : 130.23, \"pendente\" : false\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/financeiros/doAdicionar",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"financeiros",
+								"doAdicionar"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Financeiros/doAtualizar",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{ \r\n     \"id\": 1,\r\n     \"receita\": true,\r\n    \"parceiroId\" : 1,\r\n    \"dtMovimento\": \"2021-02-20\",\r\n            \"dtVencimento\": \"2021-02-26\",\r\n            \"dtBaixa\": \"\",\r\n            \"historico\": \"teste agora certo\",\r\n            \"vlrFinanceiro\": 101.20,\r\n            \"pendente\": true\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/financeiros/doAtualizar",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"financeiros",
+								"doAtualizar"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Financeiros/doEstornarBaixa",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/financeiros/doEstornarBaixa?id=3",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"financeiros",
+								"doEstornarBaixa"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "3"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Financeiros/doBaixar",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{ \r\n    \"id\": 3,\r\n    \"dtBaixa\": \"2021-02-21\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/financeiros/doBaixar",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"financeiros",
+								"doBaixar"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Financeiros/doApagar",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/financeiros/doApagar?id=6",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"financeiros",
+								"doApagar"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "6"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Localizacoes",
+			"item": [
+				{
+					"name": "Localizacoes/doObterTodos",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/localizacoes/doObterTodos",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"localizacoes",
+								"doObterTodos"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Localizacoes/doObterPorId",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/localizacoes/doObterPorId?id=801",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"localizacoes",
+								"doObterPorId"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "801"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Localizacoes/doAdicionar",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{ \"cep\" : \"384102266\", \"logradouro\" : \"teste novo bom d+\", \"complemento\" : \"complemento bom d+\", \"localidade\" : \"bom d+\",\r\n\"ufId\" : 2, \"bairro\" : \"xxx nome do bairro\", \"longitude\" : 1 , \"latitude\" : 10\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/localizacoes/doAdicionar",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"localizacoes",
+								"doAdicionar"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Localizacoes/doAtualizar",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{ \"id\": 801,\r\n        \"cep\": \"384102266\",\r\n        \"logradouro\": \"logradouro alterado bom d+\",\r\n        \"complemento\": \"cpl teste alterado bom d+\",\r\n        \"localidade\": \"localidade alterado bom d+\",\r\n        \"ufId\": 3,\r\n        \"bairro\": \"teste alterado\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/localizacoes/doAtualizar",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"localizacoes",
+								"doAtualizar"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Localizacoes/doApagar",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/localizacoes/doApagar?id=6",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"localizacoes",
+								"doApagar"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "6"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Pesquisas",
+			"item": [
+				{
+					"name": "pesquisas/doObterUfs",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/pesquisas/doObterUfs",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"pesquisas",
+								"doObterUfs"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "pesquisas/doObterSexos",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/pesquisas/doObterSexos",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"pesquisas",
+								"doObterSexos"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

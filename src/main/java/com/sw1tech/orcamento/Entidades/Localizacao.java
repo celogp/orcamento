@@ -1,9 +1,14 @@
 package com.sw1tech.orcamento.Entidades;
 
-import lombok.Data;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
-import javax.persistence.*;
-import java.math.BigInteger;
+import lombok.Data;
 
 @Data
 @Entity(name = "TLOCALIZACOES")
@@ -11,7 +16,7 @@ public class Localizacao {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private Long id;
 
     @Column(name="cep")
     private String cep; //maximo de 8
@@ -29,10 +34,10 @@ public class Localizacao {
     private String bairro; //maximo de 100
 
     @Column(name="longitude")
-    private BigInteger longitude;
+    private Long longitude;
 
     @Column(name="latitude")
-    private BigInteger latitude;
+    private Long latitude;
 
     @ManyToOne()
     @JoinColumn(name = "ufid", referencedColumnName = "id")

@@ -33,14 +33,6 @@ public class ControleLocalizacao implements IControleLocalizacao {
         return _modelMapper.map(localizacaoReq, Localizacao.class);
     }
 
-    /*
-    public <T, E> E mapper(T source, Class<E> typeDestination) {
-        ModelMapper modelMapper = new ModelMapper();
-        modelMapper.getConfiguration().setMatchingStrategy(MatchingStrategies.STRICT);
-        return modelMapper.map(source, typeDestination);
-    }
-*/
-
     @Override
     public ResponseEntity<ObjetoResposta> doObterTodos() {
         var lstLocalizacao = _servicoLocalizacao.doObterTodos()
@@ -48,50 +40,50 @@ public class ControleLocalizacao implements IControleLocalizacao {
                 .map(this::doMapperEntityToRes)
                 .collect(Collectors.toList());
         var _objResposta = new ObjetoResposta(lstLocalizacao);
-        return new ResponseEntity(_objResposta, HttpStatus.OK);
+        return new ResponseEntity<ObjetoResposta>(_objResposta, HttpStatus.OK);
     }
 
     @Override
-    public ResponseEntity<ObjetoResposta> doObterPorId(int id) {
+    public ResponseEntity<ObjetoResposta> doObterPorId(Long id) {
         var _objResposta =  new ObjetoResposta(
                 doMapperEntityToRes(_servicoLocalizacao.doObterPorId(id).orElseGet(Localizacao::new))
         );
-        return new ResponseEntity(_objResposta, HttpStatus.OK);
+        return new ResponseEntity<ObjetoResposta>(_objResposta, HttpStatus.OK);
     }
 
     @Override
     public ResponseEntity<ObjetoResposta> doAdicionar(LocalizacaoReq _requisicao) {
         if (!_requisicao.doValidar()){
             var _objResposta = new ObjetoResposta(null, _requisicao.doObterMensagens());
-            return new ResponseEntity(_objResposta, HttpStatus.BAD_REQUEST);
+            return new ResponseEntity<ObjetoResposta>(_objResposta, HttpStatus.BAD_REQUEST);
         }
         var _localizacao = doMapperReqToEntity(_requisicao);
         var _objResposta = new ObjetoResposta(
-                 _servicoLocalizacao.doAdicionar(_localizacao).getId()
+                 _servicoLocalizacao.doAdicionar(_localizacao)
         );
-        return new ResponseEntity(_objResposta, HttpStatus.CREATED);
+        return new ResponseEntity<ObjetoResposta>(_objResposta, HttpStatus.CREATED);
     }
 
     @Override
     public ResponseEntity<ObjetoResposta> doAtualizar(LocalizacaoReq _requisicao) {
         if (!_requisicao.doValidar()){
             final ObjetoResposta _objResposta = new ObjetoResposta( _requisicao.getId(), _requisicao.doObterMensagens());
-            return new ResponseEntity(_objResposta, HttpStatus.BAD_REQUEST);
+            return new ResponseEntity<ObjetoResposta>(_objResposta, HttpStatus.BAD_REQUEST);
         }
         var _localizacao = doMapperReqToEntity(_requisicao);
         var _objResposta = new ObjetoResposta(
-                _servicoLocalizacao.doAtualizar(_localizacao).getId()
+                _servicoLocalizacao.doAtualizar(_localizacao)
         );
-        return new ResponseEntity(_objResposta, HttpStatus.OK);    }
+        return new ResponseEntity<ObjetoResposta>(_objResposta, HttpStatus.OK);    }
 
     @Override
-    public ResponseEntity<ObjetoResposta> doApagar(int id) {
+    public ResponseEntity<ObjetoResposta> doApagar(Long id) {
         if (id<=0){
             var _objResposta = new ObjetoResposta(id);
-            return new ResponseEntity(_objResposta, HttpStatus.BAD_REQUEST);
+            return new ResponseEntity<ObjetoResposta>(_objResposta, HttpStatus.BAD_REQUEST);
         }
         _servicoLocalizacao.doApagar(id);
         var _objResposta = new ObjetoResposta(id);
-        return new ResponseEntity(_objResposta, HttpStatus.OK);
+        return new ResponseEntity<ObjetoResposta>(_objResposta, HttpStatus.OK);
     }
 }

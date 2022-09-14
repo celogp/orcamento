@@ -5,11 +5,11 @@ import lombok.Data;
 import javax.persistence.*;
 
 @Data
-@Entity(name = "TUF")
+@Entity(name = "TUFS")
 public class Uf {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private Long id;
 
     @Column(name="nome")
     private String nome; //maximo de 60

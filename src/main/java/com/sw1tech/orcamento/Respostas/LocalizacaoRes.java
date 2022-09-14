@@ -1,9 +1,10 @@
 package com.sw1tech.orcamento.Respostas;
 
-import com.sw1tech.orcamento.Entidades.Localizacao;
-import com.sw1tech.orcamento.Entidades.Uf;
-import lombok.Data;
 import java.math.BigInteger;
+
+import com.sw1tech.orcamento.Entidades.Uf;
+
+import lombok.Data;
 
 @Data
 public class LocalizacaoRes  {

@@ -1,17 +1,18 @@
 package com.sw1tech.orcamento.Requisicoes;
 
-import lombok.Data;
-import lombok.EqualsAndHashCode;
-import org.springframework.format.annotation.DateTimeFormat;
-
 import java.math.BigDecimal;
 import java.util.Date;
 import java.util.List;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
+import lombok.Data;
+import lombok.EqualsAndHashCode;
+
 @Data
 @EqualsAndHashCode(callSuper = true)
 public class FinanceiroBaixaReq extends RequisicaoBase {
-    private int id;
+	private Long id;
     @DateTimeFormat(pattern="dd/MM/yyyy")
     private Date dtMovimento;
     @DateTimeFormat(pattern="dd/MM/yyyy")

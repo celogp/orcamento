@@ -5,7 +5,7 @@ import lombok.Data;
 import java.math.BigDecimal;
 
 @Data
-public class VFinanceiroMesRes {
+public class FinanceiroAnoMesRes {
 
     private int id;
     private int anoref;

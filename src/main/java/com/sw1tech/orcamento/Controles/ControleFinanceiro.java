@@ -44,54 +44,54 @@ public class ControleFinanceiro implements IControleFinanceiro {
 
         var _objResposta = new ObjetoResposta(lstFinanceiro);
 
-        return new ResponseEntity(_objResposta, HttpStatus.OK);
+        return new ResponseEntity<ObjetoResposta>(_objResposta, HttpStatus.OK);
     }
 
     @Override
-    public ResponseEntity<ObjetoResposta> doObterPorId(int id) {
+    public ResponseEntity<ObjetoResposta> doObterPorId(Long id) {
         final ObjetoResposta _objResposta =  new ObjetoResposta(
                 doMapperEntityToRes(_servicosFinanceiro.doObterPorId(id).orElseGet(Financeiro::new))
         );
-        return new ResponseEntity(_objResposta, HttpStatus.OK);
+        return new ResponseEntity<ObjetoResposta>(_objResposta, HttpStatus.OK);
     }
 
     @Override
     public ResponseEntity<ObjetoResposta> doAdicionar(FinanceiroReq _requisicao) {
         if (!_requisicao.doValidar()){
             var _objResposta = new ObjetoResposta(null, _requisicao.doObterMensagens());
-            return new ResponseEntity(_objResposta, HttpStatus.BAD_REQUEST);
+            return new ResponseEntity<ObjetoResposta>(_objResposta, HttpStatus.BAD_REQUEST);
         }
         var _financeiro = doMapperReqToEntity(_requisicao);
         var _objResposta = new ObjetoResposta(
-                _servicosFinanceiro.doAdicionar(_financeiro).getId()
+                _servicosFinanceiro.doAdicionar(_financeiro)
         );
-        return new ResponseEntity(_objResposta, HttpStatus.CREATED);
+        return new ResponseEntity<ObjetoResposta>(_objResposta, HttpStatus.CREATED);
     }
 
     @Override
-    public ResponseEntity doAtualizar(FinanceiroReq _requisicao) {
+    public ResponseEntity<ObjetoResposta> doAtualizar(FinanceiroReq _requisicao) {
         if (!_requisicao.doValidar()){
             var _objResposta = new ObjetoResposta(_requisicao, _requisicao.doObterMensagens());
-            return new ResponseEntity(_objResposta, HttpStatus.BAD_REQUEST);
+            return new ResponseEntity<ObjetoResposta>(_objResposta, HttpStatus.BAD_REQUEST);
         }
         var _financeiro = _modelMapper.map(_requisicao, Financeiro.class);
         //var _dt = _financeiro.getDtVencimento().toString("YYYY-DD-MM");
 
          var _objResposta = new ObjetoResposta(
-                _servicosFinanceiro.doAtualizar(_financeiro).getId()
+                _servicosFinanceiro.doAtualizar(_financeiro)
         );
-        return new ResponseEntity(_objResposta, HttpStatus.OK);
+        return new ResponseEntity<ObjetoResposta>(_objResposta, HttpStatus.OK);
     }
 
     @Override
-    public ResponseEntity doApagar(int id) {
+    public ResponseEntity<ObjetoResposta> doApagar(Long id) {
         if (id<=0){
             var _objResposta = new ObjetoResposta(id);
-            return new ResponseEntity(_objResposta, HttpStatus.BAD_REQUEST);
+            return new ResponseEntity<ObjetoResposta>(_objResposta, HttpStatus.BAD_REQUEST);
         }
         _servicosFinanceiro.doApagar(id);
         var _objResposta = new ObjetoResposta(id);
-        return new ResponseEntity(_objResposta, HttpStatus.OK);
+        return new ResponseEntity<ObjetoResposta>(_objResposta, HttpStatus.OK);
     }
 
 
@@ -104,26 +104,26 @@ public class ControleFinanceiro implements IControleFinanceiro {
 
         if ( !_requisicao.doValidar() ) {
             var _objResposta = new ObjetoResposta(_requisicao, _requisicao.doObterMensagens());
-            return new ResponseEntity(_objResposta, HttpStatus.BAD_REQUEST);
+            return new ResponseEntity<ObjetoResposta>(_objResposta, HttpStatus.BAD_REQUEST);
         }
 
         var _objResposta = new ObjetoResposta(
                 _servicosFinanceiro.doBaixar(_requisicao.getId(), _requisicao.getDtBaixa())
         );
 
-        return new ResponseEntity(_objResposta, HttpStatus.OK);
+        return new ResponseEntity<ObjetoResposta>(_objResposta, HttpStatus.OK);
     }
 
     @Override
-    public ResponseEntity<ObjetoResposta> doEstornarBaixa(int id) {
+    public ResponseEntity<ObjetoResposta> doEstornarBaixa(Long id) {
         if (id<=0){
             var _objResposta = new ObjetoResposta(id);
-            return new ResponseEntity(_objResposta, HttpStatus.BAD_REQUEST);
+            return new ResponseEntity<ObjetoResposta>(_objResposta, HttpStatus.BAD_REQUEST);
         }
         var _objResposta = new ObjetoResposta(
                 _servicosFinanceiro.doEstornarBaixa(id)
         );
-        return new ResponseEntity(_objResposta, HttpStatus.OK);
+        return new ResponseEntity<ObjetoResposta>(_objResposta, HttpStatus.OK);
     }
 
     @Override
@@ -149,6 +149,6 @@ public class ControleFinanceiro implements IControleFinanceiro {
 
         var _resultResp = new Object[]{ mesesAno, vlrRecMes, vlrDesMes};
         var _objResposta = new ObjetoResposta(_resultResp);
-        return new ResponseEntity(_objResposta, HttpStatus.OK);
+        return new ResponseEntity<ObjetoResposta>(_objResposta, HttpStatus.OK);
     }
 }

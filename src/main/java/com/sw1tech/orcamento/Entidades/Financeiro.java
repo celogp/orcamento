@@ -1,38 +1,43 @@
 package com.sw1tech.orcamento.Entidades;
 
-import lombok.Data;
-import org.springframework.format.annotation.DateTimeFormat;
-
-import javax.persistence.*;
 import java.math.BigDecimal;
 import java.util.Date;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+
+import lombok.Data;
 
 @Data
 @Entity(name = "TFINANCEIROS")
 public class Financeiro {
-    @Id
+	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private Long id;
 
     @Column(name="nrodocumento")
-    private int nrodocumento;
+    private Long nrodocumento;
 
     @Column(name="receita")
     private boolean receita;
 
-    @Temporal(TemporalType.DATE)
-    @DateTimeFormat(pattern="dd/MM/yyyy")
+    @Temporal(value=TemporalType.DATE)
     @Column(name="dtmovimento")
     private Date dtMovimento;
 
-    @Temporal(TemporalType.DATE)
-    @DateTimeFormat(pattern="dd/MM/yyyy")
+    @Temporal(value=TemporalType.DATE)
     @Column(name="dtvencimento")
     private Date dtVencimento;
 
-    @Temporal(TemporalType.DATE)
-    @DateTimeFormat(pattern="dd/MM/yyyy")
     @Column(name="dtbaixa")
+    @Temporal(value=TemporalType.DATE)
     private Date dtBaixa;
 
     @Column(name="historico")

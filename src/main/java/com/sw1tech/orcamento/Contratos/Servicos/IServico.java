@@ -4,9 +4,9 @@ import java.util.List;
 import java.util.Optional;
 
 public interface IServico<ObjEntidade> {
-    ObjEntidade doAdicionar(ObjEntidade ObjEntidade);
-    Integer doApagar(int id);
-    ObjEntidade doAtualizar(ObjEntidade ObjEntidade);
-    Optional<ObjEntidade> doObterPorId(int id);
+    ObjEntidade doAdicionar(ObjEntidade objEntidade);
+    Long doApagar(Long id);
+    ObjEntidade doAtualizar(ObjEntidade objEntidade);
+    Optional<ObjEntidade> doObterPorId(Long id);
     List<ObjEntidade> doObterTodos();
 }

@@ -4,12 +4,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 public abstract class RequisicaoBase {
-    List<String> lstMensagens;
+
+	List<String> lstMensagens;
 
     public abstract boolean doValidar();
     public abstract List<String> doObterMensagens();
 
-    public RequisicaoBase(){
+    protected RequisicaoBase(){
         lstMensagens = new ArrayList<>();
     }
 

@@ -41,12 +41,6 @@ public class FinanceiroReq  extends RequisicaoBase {
         return this.lstMensagens;
     }
 
-    private void doValidarId(){
-        if (this.id == 0) {
-            this.lstMensagens.add("Atenção !, Nro.Único do financeiro sem valor.");
-        }
-    }
-
     private void doValidarParceiroId() {
         if (this.parceiroId == 0) {
             this.lstMensagens.add("Atenção !, Parceiro não foi informado.");

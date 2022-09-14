@@ -1,10 +1,9 @@
 package com.sw1tech.orcamento.Requisicoes;
 
+import java.util.List;
+
 import lombok.Data;
 import lombok.EqualsAndHashCode;
-
-import java.math.BigInteger;
-import java.util.List;
 
 @Data
 @EqualsAndHashCode(callSuper = true)
@@ -17,8 +16,8 @@ public class LocalizacaoReq extends RequisicaoBase {
     private String localidade; //maximo de 100
     private int ufId; //maximo de 2
     private String bairro; //maximo de 100
-    private BigInteger longitude;
-    private BigInteger latitude;
+    private Long longitude;
+    private Long latitude;
 
     @Override
     public boolean doValidar() {

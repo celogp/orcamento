@@ -21,7 +21,7 @@ public class ServicoParceiro implements IServicoParceiro {
     }
 
     @Override
-    public Integer doApagar(int id) {
+    public Long doApagar(Long id) {
         _repositoriosParceiro.deleteById(id);
         return id;
     }
@@ -32,7 +32,7 @@ public class ServicoParceiro implements IServicoParceiro {
     }
 
     @Override
-    public Optional<Parceiro> doObterPorId(int id) {
+    public Optional<Parceiro> doObterPorId(Long id) {
         return _repositoriosParceiro.findById(id);
     }
 

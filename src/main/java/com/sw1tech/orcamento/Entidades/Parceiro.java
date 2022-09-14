@@ -10,7 +10,7 @@ public class Parceiro {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private Long id;
 
     @Column(name="razao")
     private String razao; //maximo de 100

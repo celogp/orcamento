@@ -41,52 +41,52 @@ public class ControleParceiro implements IControleParceiro {
                 .map(this::doMapperEntityToRes)
                 .collect(Collectors.toList());
         var _objResposta = new ObjetoResposta(lstParceiro);
-        return new ResponseEntity(_objResposta, HttpStatus.OK);
+        return new ResponseEntity<ObjetoResposta>(_objResposta, HttpStatus.OK);
     }
 
     @Override
-    public ResponseEntity<ObjetoResposta> doObterPorId(int id) {
+    public ResponseEntity<ObjetoResposta> doObterPorId(Long id) {
         final ObjetoResposta _objResposta =  new ObjetoResposta(
                 doMapperEntityToRes(_servicosParceiro.doObterPorId(id).orElseGet(Parceiro::new))
         );
-        return new ResponseEntity(_objResposta, HttpStatus.OK);
+        return new ResponseEntity<ObjetoResposta>(_objResposta, HttpStatus.OK);
     }
 
     @Override
     public ResponseEntity<ObjetoResposta> doAdicionar(ParceiroReq _requisicao) {
         if (!_requisicao.doValidar()){
             var _objResposta = new ObjetoResposta(null, _requisicao.doObterMensagens());
-            return new ResponseEntity(_objResposta, HttpStatus.BAD_REQUEST);
+            return new ResponseEntity<ObjetoResposta>(_objResposta, HttpStatus.BAD_REQUEST);
         }
         var _parceiro = doMapperReqToEntity(_requisicao);
         var _objResposta = new ObjetoResposta(
-                _servicosParceiro.doAdicionar(_parceiro).getId()
+                _servicosParceiro.doAdicionar(_parceiro)
         );
-        return new ResponseEntity(_objResposta, HttpStatus.CREATED);
+        return new ResponseEntity<ObjetoResposta>(_objResposta, HttpStatus.CREATED);
     }
 
     @Override
-    public ResponseEntity doAtualizar(ParceiroReq _requisicao) {
+    public ResponseEntity<ObjetoResposta> doAtualizar(ParceiroReq _requisicao) {
         if (!_requisicao.doValidar()){
             var _objResposta = new ObjetoResposta(_requisicao, _requisicao.doObterMensagens());
-            return new ResponseEntity(_objResposta, HttpStatus.BAD_REQUEST);
+            return new ResponseEntity<ObjetoResposta>(_objResposta, HttpStatus.BAD_REQUEST);
         }
         var _parceiro = _modelMapper.map(_requisicao, Parceiro.class);
         var _objResposta = new ObjetoResposta(
-                _servicosParceiro.doAtualizar(_parceiro).getId()
+                _servicosParceiro.doAtualizar(_parceiro)
         );
-        return new ResponseEntity(_objResposta, HttpStatus.OK);
+        return new ResponseEntity<ObjetoResposta>(_objResposta, HttpStatus.OK);
     }
 
     @Override
-    public ResponseEntity doApagar(int id) {
+    public ResponseEntity<ObjetoResposta> doApagar(Long id) {
         if (id<=0){
             var _objResposta = new ObjetoResposta(id);
-            return new ResponseEntity(_objResposta, HttpStatus.BAD_REQUEST);
+            return new ResponseEntity<ObjetoResposta>(_objResposta, HttpStatus.BAD_REQUEST);
         }
         _servicosParceiro.doApagar(id);
         var _objResposta = new ObjetoResposta(id);
-        return new ResponseEntity(_objResposta, HttpStatus.OK);
+        return new ResponseEntity<ObjetoResposta>(_objResposta, HttpStatus.OK);
     }
 
 }

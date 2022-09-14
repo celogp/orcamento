@@ -21,7 +21,7 @@ public class ServicoLocalizacao  implements IServicoLocalizacao {
     }
 
     @Override
-    public Integer doApagar(int id) {
+    public Long doApagar(Long id) {
         _reopositorioLocalizacao.deleteById(id);
         return id;
     }
@@ -32,7 +32,7 @@ public class ServicoLocalizacao  implements IServicoLocalizacao {
     }
 
     @Override
-    public Optional<Localizacao> doObterPorId(int id) {
+    public Optional<Localizacao> doObterPorId(Long id) {
         return _reopositorioLocalizacao.findById(id);
     }
 

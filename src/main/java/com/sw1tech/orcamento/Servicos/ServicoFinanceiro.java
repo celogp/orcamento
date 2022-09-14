@@ -1,25 +1,27 @@
 package com.sw1tech.orcamento.Servicos;
 
-import com.sw1tech.orcamento.Contratos.Repositorios.IRepositorioFinanceiro;
-import com.sw1tech.orcamento.Contratos.Repositorios.IRepositorioVFinanceiroMes;
-import com.sw1tech.orcamento.Contratos.Servicos.IServicoFinanceiro;
-import com.sw1tech.orcamento.Entidades.Financeiro;
-import com.sw1tech.orcamento.Views.VFinanceiroMes;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-
 import java.util.Date;
 import java.util.List;
 import java.util.Optional;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.sw1tech.orcamento.Contratos.Repositorios.IRepositorioFinanceiro;
+import com.sw1tech.orcamento.Contratos.Repositorios.IRepositorioFinanceiroAnoMes;
+import com.sw1tech.orcamento.Contratos.Servicos.IServicoFinanceiro;
+import com.sw1tech.orcamento.Entidades.Financeiro;
+import com.sw1tech.orcamento.Entidades.Views.FinanceiroAnoMes;
 
 @Service
 public class ServicoFinanceiro implements IServicoFinanceiro {
 
     @Autowired
-    IRepositorioFinanceiro _repositoriosFinanceiro;
+    IRepositorioFinanceiroAnoMes _repositoriosFinanceiroAnoMes;
 
+	
     @Autowired
-    IRepositorioVFinanceiroMes _repositoriosFinanceiroMes;
+    IRepositorioFinanceiro _repositoriosFinanceiro;
 
     @Override
     public Financeiro doAdicionar(Financeiro financeiro) {
@@ -27,7 +29,7 @@ public class ServicoFinanceiro implements IServicoFinanceiro {
     }
 
     @Override
-    public Integer doApagar(int id) {
+    public Long doApagar(Long id) {
         _repositoriosFinanceiro.deleteById(id);
         return id;
     }
@@ -38,7 +40,7 @@ public class ServicoFinanceiro implements IServicoFinanceiro {
     }
 
     @Override
-    public Optional<Financeiro> doObterPorId(int id) {
+    public Optional<Financeiro> doObterPorId(Long id) {
         return _repositoriosFinanceiro.findById(id);
     }
 
@@ -48,17 +50,17 @@ public class ServicoFinanceiro implements IServicoFinanceiro {
     }
 
     @Override
-    public Integer doBaixar(int id, Date dtBaixa) {
+    public Long doBaixar(Long id, Date dtBaixa) {
         return _repositoriosFinanceiro.doBaixar(id, dtBaixa);
     }
 
     @Override
-    public Integer doEstornarBaixa(int id) {
+    public Long doEstornarBaixa(Long id) {
         return _repositoriosFinanceiro.doEstornarBaixa(id);
     }
 
     @Override
-    public List<VFinanceiroMes> doObterFinanceirosMes(int ano) {
-        return _repositoriosFinanceiroMes.doObterFinanceirosMesV(ano);
+    public List<FinanceiroAnoMes> doObterFinanceirosMes(int ano) {
+        return _repositoriosFinanceiroAnoMes.doObterFinanceirosMesV(ano);
     }
 }

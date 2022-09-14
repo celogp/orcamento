@@ -1,20 +1,35 @@
 #
-#Derby
+#PostGreSql
 #
 spring:
   jpa:
-    database: derby
+    database: postgresql
     hibernate:
-      ddl-auto: update
+      ddl-auto: validate
     properties:
       hibernate:
         format-sql: true
     show-sql: true
-
-
+ 
+  sql:
+    init:
+      platform: postgresql
+      mode: always
+    
   datasource:
-    url: jdbc:derby://localhost:1527/sw1techdborca;create=true
-    driver-class-name: org.apache.derby.client.ClientAutoloadedDriver
+    url: jdbc:postgresql://kesavan.db.elephantsql.com:5432/ivkvjkfo
+    username: ivkvjkfo
+    password: Bk32PcZ-k9L8iWN1lq0fc_W9_n9SrAdS
+    #platform: postgresql
+    driver-class-name: org.postgresql.Driver
+    #initialization-mode: always
 
+  servlet: 
+    multipart:
+      max-file-size: 2MB
+      max-request-size: 2MB
+        
+      
   flyway:
     baseline-on-migrate: true
+    

@@ -11,7 +11,7 @@ public interface IControle<ObjetoRequisicao> {
     ResponseEntity<ObjetoResposta> doObterTodos();
 
     @GetMapping("/doObterPorId")
-    ResponseEntity<ObjetoResposta> doObterPorId(@Validated @RequestParam(name = "id") final int id);
+    ResponseEntity<ObjetoResposta> doObterPorId(@Validated @RequestParam(name = "id") final Long id);
 
     @PostMapping("/doAdicionar")
     ResponseEntity<ObjetoResposta> doAdicionar(@Validated @RequestBody final ObjetoRequisicao _objRequisicao);
@@ -20,6 +20,6 @@ public interface IControle<ObjetoRequisicao> {
     ResponseEntity<ObjetoResposta> doAtualizar(@Validated @RequestBody final ObjetoRequisicao _objRequisicao);
 
     @DeleteMapping("/doApagar")
-    ResponseEntity<ObjetoResposta> doApagar(@Validated @RequestParam(name = "id") final int id);
+    ResponseEntity<ObjetoResposta> doApagar(@Validated @RequestParam(name = "id") final Long id);
 
 }

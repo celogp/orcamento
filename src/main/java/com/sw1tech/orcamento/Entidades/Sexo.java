@@ -9,7 +9,7 @@ import javax.persistence.*;
 public class Sexo {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private Long id;
 
     @Column(name="nome")
     private String nome;

@@ -16,7 +16,7 @@ public interface IControleFinanceiro extends IControle<FinanceiroReq> {
     ResponseEntity<ObjetoResposta> doBaixar(@Validated @RequestBody final FinanceiroBaixaReq _requisicao);
 
     @PutMapping("/doEstornarBaixa")
-    ResponseEntity<ObjetoResposta> doEstornarBaixa(@Validated @RequestParam(name = "id") final int id);
+    ResponseEntity<ObjetoResposta> doEstornarBaixa(@Validated @RequestParam(name = "id") final Long id);
 
     @GetMapping("/doObterFinanceirosMes")
     ResponseEntity<ObjetoResposta> doObterFinanceirosMes(@Validated @RequestParam(name = "ano") final int ano);

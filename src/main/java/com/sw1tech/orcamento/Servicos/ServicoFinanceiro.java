@@ -63,4 +63,10 @@ public class ServicoFinanceiro implements IServicoFinanceiro {
     public List<FinanceiroAnoMes> doObterFinanceirosMes(int ano) {
         return _repositoriosFinanceiroAnoMes.doObterFinanceirosMesV(ano);
     }
+    
+    private void doCalculaJuros(Long id) {
+    	var _juros = 0;
+    	_juros = _juros +1 ;
+    	
+    }
 }
